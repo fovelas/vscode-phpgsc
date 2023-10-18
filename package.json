@@ -1,0 +1,91 @@
+{
+  "name": "phpgsc",
+  "displayName": "PHP Getter & Setter and Constructor",
+  "description": "Generate getter, setter and constructor methods for all variables in php class.",
+  "version": "1.0.1",
+  "icon": "images/icon.png",
+  "publisher": "fovelas",
+  "author": "fovelas",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fovelas/vscode-phpgsc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fovelas/vscode-phpgsc/issues"
+  },
+  "homepage": "https://github.com/fovelas/vscode-phpgsc#readme",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "php",
+    "constructor",
+    "getter",
+    "getters",
+    "setter",
+    "setters"
+  ],
+  "activationEvents": [
+    "onLanguage:php"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "phpgsc.generateConstructor",
+        "title": "phpgsc: Constructor"
+      },
+      {
+        "command": "phpgsc.generateGetter",
+        "title": "phpgsc: Getter"
+      },
+      {
+        "command": "phpgsc.generateSetter",
+        "title": "phpgsc: Setter"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == php",
+          "command": "phpgsc.generateConstructor",
+          "group": "phpgsc@1"
+        },
+        {
+          "when": "resourceLangId == php",
+          "command": "phpgsc.generateGetter",
+          "group": "phpgsc@2"
+        },
+        {
+          "when": "resourceLangId == php",
+          "command": "phpgsc.generateSetter",
+          "group": "phpgsc@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.83.0",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2",
+    "@vscode/test-electron": "^2.3.4"
+  }
+}
